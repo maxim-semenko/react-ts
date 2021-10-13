@@ -63,10 +63,8 @@ function CardBreed(props) {
                             <img alt="" src={info}
                                  style={{resize: "both", cursor: "pointer"}}
                                  onClick={() => {
-                                     console.log("OPEN")
                                      dispatch(setCurrentBreed(props.breed))
                                      props.onOpen()
-                                     console.log(props.value)
                                  }}
                             />
                         </h6>

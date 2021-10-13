@@ -117,29 +117,26 @@ function BreedList() {
         }
     }
 
+    const showCard = (rowIndex, columnIndex) => {
+        if (3 * rowIndex + columnIndex < filterList.length) {
+            const currentBreed = filterList[3 * rowIndex + columnIndex]
+            // CHECK THIS, BECAUSE JSON FROM API HAS MISTAKES!!!
+            if (currentBreed.name !== "European Burmese" && currentBreed.name !== "Malayan") {
+                return (
+                    <div>
+                        <CardBreed
+                            breed={currentBreed}
+                            onOpen={() => setShowCharacteristicsModal(true)}
+                        />
+                    </div>
+                )
+            }
+        }
+    }
+
     const Cell = ({columnIndex, rowIndex, style}) => (
         <div style={style}>
-            {
-                3 * rowIndex + columnIndex < filterList.length ?
-                    <div>
-                        {
-                            // CHECK FOR THIS, BECAUSE API /Breeds JSON HAS MISTAKES
-                            filterList[3 * rowIndex + columnIndex].name !== "European Burmese"
-                            && breeds[3 * rowIndex + columnIndex].name !== "Malayan" ?
-                                <div>
-                                    <CardBreed breed={filterList[3 * rowIndex + columnIndex]}
-                                               onOpen={() => setShowCharacteristicsModal(true)}
-                                    />
-                                </div>
-                                :
-                                <div>
-                                </div>
-                        }
-                    </div>
-                    :
-                    <div>
-                    </div>
-            }
+            {showCard(rowIndex, columnIndex)}
         </div>
     );
 
@@ -152,15 +149,17 @@ function BreedList() {
                 :
                 <Container fluid>
                     <Navbar style={{marginTop: "10px", background: "white", border: "1px solid rgb(223,223,233)"}}>
-                        <Navbar.Brand><Form.Check
-                            type="switch"
-                            id="custom-switch"
-                            label="Show only favorite"
-                            checked={isShowFavorites}
-                            onClick={(event) => {
-                                showFavorite(event)
-                            }}
-                        /></Navbar.Brand>
+                        <Navbar.Brand>
+                            <Form.Check
+                                type="switch"
+                                id="custom-switch"
+                                label="Show only favorite"
+                                checked={isShowFavorites}
+                                onClick={(event) => {
+                                    showFavorite(event)
+                                }}
+                            />
+                        </Navbar.Brand>
                         <Navbar.Collapse className="justify-content-end">
                             <Select
                                 isMulti

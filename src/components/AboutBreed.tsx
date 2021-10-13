@@ -16,6 +16,65 @@ function AboutBreed(props: any) {
         dispatch(fetchBreedAction.request(props.match.params.name))
     }, [])
 
+
+    const showContent = () => {
+        if (breed !== undefined && breed !== null) {
+            return (
+                <Container fluid>
+                    <Navbar expand="lg" variant="light" bg="light">
+                        <Container fluid>
+                            <Link to={{pathname: `/`}}>
+                                <Button style={{
+                                    backgroundColor: "#efeff6",
+                                    border: "1px solid grey",
+                                    color: "black"
+                                }}>Back to Library
+                                </Button>
+                            </Link>
+                            <Navbar.Collapse className="justify-content-center">
+                                <h1>{breed.name}</h1>
+                            </Navbar.Collapse>
+                        </Container>
+                    </Navbar>
+                    <Row>
+                        <Col lg={3}>
+                            <img src={localStorage.getItem("url_image")} width="380px" height="350px"
+                                 alt={"img"}/>
+                        </Col>
+                        <Col lg={9}>
+                            <p><b>Description: </b>{breed.description}</p>
+                            <div>
+                                <b style={{display: "block", float: "left", marginRight: "5px"}}>
+                                    Temperament:
+                                </b>
+                                {
+                                    breed.temperament.split(',').map(temperament =>
+                                        <div style={{
+                                            background: "#3486eb",
+                                            display: "block",
+                                            float: "left",
+                                            borderRadius: "5px",
+                                            color: "white",
+                                            marginRight: "3px",
+                                            padding: "3px"
+                                        }}>
+                                            {temperament}
+                                        </div>
+                                    )
+                                }
+                            </div>
+                            <br/>
+                            <br/>
+                            <p><b>Origin: </b>{breed.origin}</p>
+                            <p><b>Weight: </b>{breed.weight.imperial}</p>
+                        </Col>
+                    </Row>
+                    <a href={breed.wikipedia_url}>{breed.wikipedia_url}</a>
+                </Container>
+            )
+        }
+    }
+
     return (
         <div>
             {
@@ -26,66 +85,7 @@ function AboutBreed(props: any) {
                     </div>
                     :
                     <div>
-                        {
-                            breed !== undefined && breed !== null ?
-                                <Container fluid>
-                                    <Navbar expand="lg" variant="light" bg="light">
-                                        <Container fluid>
-                                            <Link to={{pathname: `/`}}>
-                                                <Button style={{
-                                                    backgroundColor: "#efeff6",
-                                                    border: "1px solid grey",
-                                                    color: "black"
-                                                }}>Back to Library
-                                                </Button>
-                                            </Link>
-                                            <Navbar.Collapse className="justify-content-center">
-                                                <h1>{breed.name}</h1>
-                                            </Navbar.Collapse>
-                                        </Container>
-                                    </Navbar>
-                                    <Row>
-                                        <Col lg={3}>
-                                            <img src={localStorage.getItem("url_image")} width="380px" height="350px"
-                                                 alt={"img"}/>
-                                        </Col>
-                                        <Col lg={9}>
-                                            <p><b>Description: </b>{breed.description}</p>
-                                            <div>
-                                                <b style={{
-                                                    display: "block",
-                                                    float: "left",
-                                                    marginRight: "5px"
-                                                }}>Temperament: </b>
-                                                {
-                                                    breed.temperament.split(',').map(temperament =>
-                                                        <div style={{
-                                                            background: "#3486eb",
-                                                            display: "block",
-                                                            float: "left",
-                                                            borderRadius: "5px",
-                                                            color: "white",
-                                                            marginRight: "3px",
-                                                            padding: "3px"
-                                                        }}>
-                                                            {temperament}
-                                                        </div>
-                                                    )
-                                                }
-                                            </div>
-                                            <br/>
-                                            <br/>
-                                            <p><b>Origin: </b>{breed.origin}</p>
-                                            <p><b>Weight: </b>{breed.weight.imperial}</p>
-                                        </Col>
-                                    </Row>
-                                    <a href={breed.wikipedia_url}>{breed.wikipedia_url}</a>
-
-                                </Container>
-                                :
-                                <div>
-                                </div>
-                        }
+                        {showContent()}
                     </div>
             }
         </div>
