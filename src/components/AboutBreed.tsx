@@ -84,7 +84,6 @@ function AboutBreed(props: any) {
                                 </Container>
                                 :
                                 <div>
-
                                 </div>
                         }
                     </div>

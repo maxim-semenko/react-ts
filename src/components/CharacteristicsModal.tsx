@@ -46,7 +46,7 @@ function CharacteristicsModal(props) {
                         </Modal.Header>
                         <Modal.Body>
                             {
-                                characteristicsList.map(breed =>
+                                characteristicsList.map(characteristic =>
                                     <div>
                                         <Row>
                                             <Col lg={4}>
@@ -55,7 +55,7 @@ function CharacteristicsModal(props) {
                                                     float: "left",
                                                     marginTop: "9px",
                                                     marginRight: "5px"
-                                                }}>{breed.name}
+                                                }}>{characteristic.name}
                                                 </b>
                                             </Col>
                                             <Col lg={8}>
@@ -63,7 +63,7 @@ function CharacteristicsModal(props) {
                                                     count={5}
                                                     size={26}
                                                     edit={false}
-                                                    value={breed.value}
+                                                    value={characteristic.value}
                                                     color={'#ffd700'}
                                                 />
                                             </Col>

@@ -11,9 +11,7 @@ import {RootStateType} from "../redux/reducers/RootReducers";
 function CardBreed(props) {
 
     const dispatch = useDispatch()
-    const {breeds, loading, favoriteBreedsNameStorage} = useSelector((state: RootStateType) => state.breed)
-    // const [showCharacteristicsModal, setShowCharacteristicsModal] = useState(false)
-
+    const {favoriteBreedsNameStorage} = useSelector((state: RootStateType) => state.breed)
 
     const add = (name: string) => {
         dispatch(addFavorite(name))

@@ -132,11 +132,13 @@ function BreedList() {
                                     />
                                 </div>
                                 :
-                                null
+                                <div>
+                                </div>
                         }
                     </div>
                     :
-                    null
+                    <div>
+                    </div>
             }
         </div>
     );
@@ -155,7 +157,9 @@ function BreedList() {
                             id="custom-switch"
                             label="Show only favorite"
                             checked={isShowFavorites}
-                            onClick={(event) => {showFavorite(event)}}
+                            onClick={(event) => {
+                                showFavorite(event)
+                            }}
                         /></Navbar.Brand>
                         <Navbar.Collapse className="justify-content-end">
                             <Select
@@ -177,7 +181,8 @@ function BreedList() {
                                             />
                                         </div>
                                         :
-                                        null
+                                        <div>
+                                        </div>
                                 }
                                 <FixedSizeGrid
                                     className="Grid"
