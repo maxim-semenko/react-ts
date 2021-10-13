@@ -147,6 +147,44 @@ function BreedList() {
         }
     }
 
+    const showContent = () => {
+        if (filterList.length !== 0) {
+            return (
+                <div>
+                    {showModal()}
+                    <FixedSizeGrid
+                        className="Grid"
+                        columnCount={3}
+                        rowCount={filterList.length / 3 + 1}
+                        columnWidth={500}
+                        height={630}
+                        width={1520}
+                        rowHeight={525}
+                        style={{border: "none", marginTop: "30px"}}
+                    >
+                        {Cell}
+                    </FixedSizeGrid>
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                    <h1 className={"text-center"} style={{marginTop: "20px"}}>
+                        <img alt="" src={search}
+                             style={{resize: "both", width: "128px", height: "128px"}}/>
+                        <h1>The list of favorite breeds is empty</h1>
+                        <p>Mark your favorite breeds with the start button</p>
+                        <Button variant="primary" onClick={() => {
+                            resetFilterFavorite()
+                        }}>
+                            reset filters
+                        </Button>
+                    </h1>
+                </div>
+            )
+        }
+    }
+
     const Cell = ({columnIndex, rowIndex, style}) => (
         <div style={style}>
             {showCard(rowIndex, columnIndex)}
@@ -181,38 +219,7 @@ function BreedList() {
                             />
                         </Navbar.Collapse>
                     </Navbar>
-                    {
-                        filterList.length !== 0 ?
-                            <div>
-                                {showModal()}
-                                <FixedSizeGrid
-                                    className="Grid"
-                                    columnCount={3}
-                                    rowCount={filterList.length / 3 + 1}
-                                    columnWidth={500}
-                                    height={630}
-                                    width={1520}
-                                    rowHeight={525}
-                                    style={{border: "none", marginTop: "30px"}}
-                                >
-                                    {Cell}
-                                </FixedSizeGrid>
-                            </div>
-                            :
-                            <div>
-                                <h1 className={"text-center"} style={{marginTop: "20px"}}>
-                                    <img alt="" src={search}
-                                         style={{resize: "both", width: "128px", height: "128px"}}/>
-                                    <h1>The list of favorite breeds is empty</h1>
-                                    <p>Mark your favorite breeds with the start button</p>
-                                    <Button variant="primary" onClick={() => {
-                                        resetFilterFavorite()
-                                    }}>
-                                        reset filters
-                                    </Button>
-                                </h1>
-                            </div>
-                    }
+                    {showContent()}
                 </Container>
             }
             <br/>

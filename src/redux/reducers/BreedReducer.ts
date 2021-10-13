@@ -40,7 +40,7 @@ export const breedReducer = createReducer<BreedType, BreedActionType>(
         },
         [GET_BREEDS_FAILED]: (state, {payload: text}) => {
             return {
-                ...state, error: text
+                ...state, error: "Breeds failed: " + text
             }
         },
         [GET_BREED_REQUEST]: (state) => {
@@ -55,7 +55,7 @@ export const breedReducer = createReducer<BreedType, BreedActionType>(
         },
         [GET_BREED_FAILED]: (state, {payload: text}) => {
             return {
-                ...state, error: text
+                ...state, error: "Breed failed: " + text
             }
         },
         [ADD_FAVORITE]: (state, {payload: name}) => {

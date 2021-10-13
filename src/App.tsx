@@ -3,7 +3,6 @@ import {Route, Switch } from 'react-router-dom';
 import HomePage from "./components/HomePage";
 import AboutBreed from "./components/AboutBreed";
 
-
 function App() {
     return (
         <div className="App">
