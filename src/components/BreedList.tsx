@@ -170,8 +170,7 @@ function BreedList() {
             return (
                 <div>
                     <h1 className={"text-center"} style={{marginTop: "20px"}}>
-                        <img alt="" src={search}
-                             style={{resize: "both", width: "128px", height: "128px"}}/>
+                        <img alt="" src={search} style={{resize: "both", width: "128px", height: "128px"}}/>
                         <h1>The list of favorite breeds is empty</h1>
                         <p>Mark your favorite breeds with the start button</p>
                         <Button variant="primary" onClick={() => {

@@ -8,7 +8,7 @@ import {
 } from "../actions/BreedsAction";
 
 
-// Мой тип
+// My breed type
 type BreedType = {
     breeds: any[],
     favoriteBreedsNameStorage: any[],
@@ -17,7 +17,7 @@ type BreedType = {
     error: string,
 }
 
-// Инициализируем состояние
+// Init state
 const initialState: BreedType = {
     breeds: [],
     favoriteBreedsNameStorage: [],
