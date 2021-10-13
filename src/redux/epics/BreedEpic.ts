@@ -7,13 +7,11 @@ import BreedService from "../../service/BreedService";
 export const fetchBreedsEpic: Epic = action$ => (action$.pipe(
     ofType(fetchBreedsAction.request),
     mergeMap(
-        () => from(BreedService.getAll())
-            .pipe
-            (
-                map(response => fetchBreedsAction.success(response.data),
-                    catchError(err => of(fetchBreedsAction.failure(err)))
-                )
+        () => from(BreedService.getAll()).pipe(
+            map(response => fetchBreedsAction.success(response.data),
+                catchError(err => of(fetchBreedsAction.failure(err)))
             )
+        )
     )
 ));
 

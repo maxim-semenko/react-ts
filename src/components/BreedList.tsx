@@ -134,6 +134,19 @@ function BreedList() {
         }
     }
 
+    const showModal = () => {
+        if (showCharacteristicsModal) {
+            return (
+                <div>
+                    <CharacteristicsModal
+                        show={showCharacteristicsModal}
+                        onHide={() => setShowCharacteristicsModal(false)}
+                    />
+                </div>
+            )
+        }
+    }
+
     const Cell = ({columnIndex, rowIndex, style}) => (
         <div style={style}>
             {showCard(rowIndex, columnIndex)}
@@ -171,18 +184,7 @@ function BreedList() {
                     {
                         filterList.length !== 0 ?
                             <div>
-                                {
-                                    showCharacteristicsModal === true ?
-                                        <div>
-                                            <CharacteristicsModal
-                                                show={showCharacteristicsModal}
-                                                onHide={() => setShowCharacteristicsModal(false)}
-                                            />
-                                        </div>
-                                        :
-                                        <div>
-                                        </div>
-                                }
+                                {showModal()}
                                 <FixedSizeGrid
                                     className="Grid"
                                     columnCount={3}
