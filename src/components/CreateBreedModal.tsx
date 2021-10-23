@@ -86,8 +86,6 @@ function CreateBreedModal(props) {
         });
     };
 
-    useEffect(() => {
-    })
 
     const changeName = (event) => {
         setIsNameError(false)
@@ -132,10 +130,8 @@ function CreateBreedModal(props) {
                     url: baseImage,
                 }
             }
-            console.log(request)
             // @ts-ignore
             dispatch(createNewBreed(request))
-            props.onHide()
         }
     }
 
@@ -162,7 +158,6 @@ function CreateBreedModal(props) {
             setDescriptionError('error.description.short')
             setIsDescriptionError(true)
         }
-        console.log(temperament.split(',').length)
 
         // temperament errors
         if (temperament.split(',').length < 2) {

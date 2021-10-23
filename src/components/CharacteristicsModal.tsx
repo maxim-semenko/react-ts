@@ -14,11 +14,6 @@ function CharacteristicsModal(props) {
     const [characteristicsList, setCharacteristicsList] = useState([])
     const [loading, setLoading] = useState(true)
 
-    const ucFirst = (str) => {
-        if (!str) return str;
-        return str[0].toUpperCase() + str.slice(1);
-    }
-
     useEffect(() => {
         if (characteristicsList.length === 0) {
             for (let key in breed) {
