@@ -5,9 +5,11 @@ import {RootStateType} from "../redux/reducers/RootReducers";
 import ReactStars from 'react-stars'
 import spinner from "../img/spinner.svg";
 import _ from "lodash";
+import {FormattedMessage, useIntl} from "react-intl";
 
 function CharacteristicsModal(props) {
 
+    const intl = useIntl()
     const {breed} = useSelector((state: RootStateType) => state.breed)
     const [characteristicsList, setCharacteristicsList] = useState([])
     const [loading, setLoading] = useState(true)
@@ -22,7 +24,7 @@ function CharacteristicsModal(props) {
             for (let key in breed) {
                 if (breed.hasOwnProperty(key)) {
                     if (typeof breed[key] === "number") {
-                        characteristicsList.push({name: ucFirst(key.replace('_', ' ')), value: breed[key]})
+                        characteristicsList.push({name: key, value: breed[key]})
                     }
                 }
             }
@@ -42,7 +44,7 @@ function CharacteristicsModal(props) {
                 <div>
                     <Modal{...props}>
                         <Modal.Header closeButton>
-                            <Modal.Title>{breed.name}’s Characteristics</Modal.Title>
+                            <Modal.Title>{breed.name}’s <FormattedMessage id="characteristic.title"/></Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                             {
@@ -55,7 +57,8 @@ function CharacteristicsModal(props) {
                                                     float: "left",
                                                     marginTop: "9px",
                                                     marginRight: "5px"
-                                                }}>{characteristic.name}
+                                                }}>
+                                                    {intl.formatMessage({id: `object.field.${characteristic.name}`})}
                                                 </b>
                                             </Col>
                                             <Col lg={8}>

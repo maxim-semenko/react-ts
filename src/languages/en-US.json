@@ -1,0 +1,68 @@
+{
+  "language.english": "English",
+  "language.russian": "Russian",
+
+  "navbar.favorite": "Show only favorite",
+  "navbar.select": "Select...",
+
+  "breedList.create": "Create new breed",
+  "breedList.load": "Load new breed",
+  "breedList.showMore": "Show more",
+
+  "about.back": "Back to Library",
+  "about.description": "Description:",
+  "about.temperament": "Temperament:",
+  "about.origin": "Origin:",
+  "about.weight": "Weight:",
+
+  "create.name": "Name:",
+  "create.image": "Image:",
+  "create.create": "Create:",
+  "create.weight.min": "Enter min:",
+  "create.weight.max": "Enter max:",
+
+  "error.name.short": "Name is so short!",
+  "error.description.short": "Description is so short!",
+  "error.temperament.short": "Temperament is so short!",
+  "error.minWeight.empty": "MinWeight cant be empty!",
+  "error.minWeight.big": "minWeight cant be > maxWeight!",
+  "error.maxWeight.empty": "maxWeight cant be empty!",
+
+  "object.field.name": "name",
+  "object.field.description": "description",
+  "object.field.origin": "origin",
+  "object.field.temperament": "temperament",
+  "object.field.minWeight":"minWeight",
+  "object.field.maxWeight":"maxWeight",
+  "object.field.urlImage":"urlImage",
+  "object.field.adaptability":"adaptability",
+  "object.field.affection_level":"affection_level",
+  "object.field.child_friendly":"child_friendly",
+  "object.field.dog_friendly":"dog_friendly",
+  "object.field.energy_level":"energy_level",
+  "object.field.experimental":"experimental",
+  "object.field.grooming":"grooming",
+  "object.field.hairless":"hairless",
+  "object.field.health_issues":"health_issues",
+  "object.field.hypoallergenic":"hypoallergenic",
+  "object.field.indoor":"indoor",
+  "object.field.intelligence":"intelligence",
+  "object.field.lap":"lap",
+  "object.field.natural":"natural",
+  "object.field.rare":"rare",
+  "object.field.rex":"rex",
+  "object.field.shedding_level":"shedding_level",
+  "object.field.short_legs":"short_legs",
+  "object.field.social_needs":"social_needs",
+  "object.field.stranger_friendly":"stranger_friendly",
+  "object.field.suppressed_tail":"suppressed_tail",
+  "object.field.vocalisation": "vocalisation",
+
+  "load.fields": "Object's fields",
+  "load.values": "File's values",
+  "load.save": "Save",
+  "load.add": "Add value",
+
+
+  "characteristic.title": "Characteristics"
+}

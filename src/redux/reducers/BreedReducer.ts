@@ -1,10 +1,10 @@
 import {createReducer} from "typesafe-actions";
 import {
     ADD_FAVORITE,
-    BreedActionType, GET_BREED_FAILED, GET_BREED_REQUEST, GET_BREED_SUCCESS,
+    BreedActionType, CREATE_NEW_BREED, GET_BREED_FAILED, GET_BREED_REQUEST, GET_BREED_SUCCESS,
     GET_BREEDS_FAILED,
     GET_BREEDS_REQUEST,
-    GET_BREEDS_SUCCESS, LOAD_FAVORITE, REMOVE_FAVORITE, SET_CURRENT_BREED
+    GET_BREEDS_SUCCESS, LOAD_COUNTRY_CODES, LOAD_FAVORITE, LOAD_ORIGINS, REMOVE_FAVORITE, SET_CURRENT_BREED
 } from "../actions/BreedsAction";
 
 
@@ -15,6 +15,8 @@ type BreedType = {
     breed: any,
     loading: boolean,
     error: string,
+    origins: any[],
+    countryCodes: any[],
 }
 
 // Init state
@@ -24,6 +26,8 @@ const initialState: BreedType = {
     breed: null,
     loading: false,
     error: '',
+    origins: [],
+    countryCodes: [],
 }
 
 export const breedReducer = createReducer<BreedType, BreedActionType>(
@@ -77,6 +81,21 @@ export const breedReducer = createReducer<BreedType, BreedActionType>(
         [SET_CURRENT_BREED]: (state, {payload: data}) => {
             return {
                 ...state, breed: data,
+            }
+        },
+        [LOAD_ORIGINS]: (state, {payload: array}) => {
+            return {
+                ...state, origins: array,
+            }
+        },
+        [LOAD_COUNTRY_CODES]: (state, {payload: array}) => {
+            return {
+                ...state, countryCodes: array,
+            }
+        },
+        [CREATE_NEW_BREED]: (state, {payload: data}) => {
+            return {
+                ...state, breeds: [...state.breeds, data],
             }
         },
     })

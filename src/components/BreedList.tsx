@@ -4,12 +4,15 @@ import {RootStateType} from "../redux/reducers/RootReducers";
 import spinner from "../img/spinner.svg"
 import search from "../img/loupe.png"
 import {Button, Container, Form, Navbar} from "react-bootstrap"
-import {fetchBreedsAction, loadFavorite} from "../redux/actions/BreedsAction";
+import {fetchBreedsAction, loadFavorite, loadOrigins} from "../redux/actions/BreedsAction";
 import Select from "react-select";
 import _ from "lodash";
 import CardBreed from "./CardBreed";
 import {FixedSizeGrid} from "react-window";
 import CharacteristicsModal from "./CharacteristicsModal";
+import CreateBreedModal from "./CreateBreedModal";
+import LoadBreedModal from "./LoadBreedModal";
+import {FormattedMessage} from "react-intl";
 
 function BreedList() {
 
@@ -20,6 +23,8 @@ function BreedList() {
     const [isShowFavorites, setIsShowFavorites] = useState(false)
     const [selectedOptions, setSelectedOptions] = useState([])
     const [showCharacteristicsModal, setShowCharacteristicsModal] = useState(false)
+    const [showCreateBreedModal, setShowCreateBreedModal] = useState(false)
+    const [showLoadBreedModal, setShowLoadBreedModal] = useState(false)
 
     useEffect(() => {
         if (breeds.length === 0) {
@@ -34,6 +39,7 @@ function BreedList() {
                     list.push({value: breed.origin, label: breed.origin})
                 }
             })
+            dispatch(loadOrigins(_.orderBy(list, ['label'], ['asc'])))
             setOriginList(_.orderBy(list, ['label'], ['asc']))
             setFilterList(breeds)
         }
@@ -145,6 +151,26 @@ function BreedList() {
                 </div>
             )
         }
+        if (showCreateBreedModal) {
+            return (
+                <div>
+                    <CreateBreedModal
+                        show={showCreateBreedModal}
+                        onHide={() => setShowCreateBreedModal(false)}
+                    />
+                </div>
+            )
+        }
+        if (showLoadBreedModal) {
+            return (
+                <div>
+                    <LoadBreedModal
+                        show={showLoadBreedModal}
+                        onHide={() => setShowLoadBreedModal(false)}
+                    />
+                </div>
+            )
+        }
     }
 
     const showContent = () => {
@@ -157,7 +183,7 @@ function BreedList() {
                         columnCount={3}
                         rowCount={filterList.length / 3 + 1}
                         columnWidth={500}
-                        height={630}
+                        height={505}
                         width={1520}
                         rowHeight={525}
                         style={{border: "none", marginTop: "30px"}}
@@ -203,7 +229,7 @@ function BreedList() {
                             <Form.Check
                                 type="switch"
                                 id="custom-switch"
-                                label="Show only favorite"
+                                label={<FormattedMessage id="navbar.favorite"/>}
                                 checked={isShowFavorites}
                                 onClick={(event) => {
                                     showFavorite(event)
@@ -214,10 +240,18 @@ function BreedList() {
                             <Select
                                 isMulti
                                 onChange={changeSelectedOptions}
+                                placeholder={<FormattedMessage id="navbar.select"/>}
                                 options={originList}
                             />
                         </Navbar.Collapse>
                     </Navbar>
+                    <Button variant="primary" style={{marginTop: "20px"}} onClick={() => setShowCreateBreedModal(true)}>
+                        <FormattedMessage id="breedList.create"/>
+                    </Button>
+                    {' '}
+                    <Button variant="success" style={{marginTop: "20px"}} onClick={() => setShowLoadBreedModal(true)}>
+                        <FormattedMessage id="breedList.load"/>
+                    </Button>
                     {showContent()}
                 </Container>
             }

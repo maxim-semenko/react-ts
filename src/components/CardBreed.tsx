@@ -7,6 +7,7 @@ import {Link} from "react-router-dom";
 import {addFavorite, removeFavorite, setCurrentBreed} from "../redux/actions/BreedsAction";
 import {useDispatch, useSelector} from "react-redux";
 import {RootStateType} from "../redux/reducers/RootReducers";
+import {FormattedMessage} from "react-intl";
 
 function CardBreed(props) {
 
@@ -56,7 +57,7 @@ function CardBreed(props) {
                             <Link to={{pathname: `/breed/${props.breed.name}`}}>
                                 <Button variant="primary"
                                         onClick={() => localStorage.setItem("url_image", props.breed.image.url)}>
-                                    Show more
+                                    <FormattedMessage id="breedList.showMore"/>
                                 </Button>
                             </Link>
                             {' '}
