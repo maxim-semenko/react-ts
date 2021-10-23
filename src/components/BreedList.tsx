@@ -197,12 +197,12 @@ function BreedList() {
                 <div>
                     <h1 className={"text-center"} style={{marginTop: "20px"}}>
                         <img alt="" src={search} style={{resize: "both", width: "128px", height: "128px"}}/>
-                        <h1>The list of favorite breeds is empty</h1>
-                        <p>Mark your favorite breeds with the start button</p>
+                        <h1><FormattedMessage id="filter.error.header"/></h1>
+                        <p><FormattedMessage id="filter.error.text"/></p>
                         <Button variant="primary" onClick={() => {
                             resetFilterFavorite()
                         }}>
-                            reset filters
+                           <FormattedMessage id="filter.error.reset"/>
                         </Button>
                     </h1>
                 </div>

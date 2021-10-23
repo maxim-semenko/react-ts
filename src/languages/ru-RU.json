@@ -24,15 +24,13 @@
   "error.minWeight.empty": "Мин вес не может быть пустым!",
   "error.minWeight.big": "Мин вес не может быть > Макс веса!",
   "error.maxWeight.empty": "Макс вес не может быть пустым",
-
-
   "object.field.name": "имя",
   "object.field.description": "описание",
   "object.field.origin": "происхождение",
   "object.field.temperament": "темперамент",
-  "object.field.minWeight":"мин вес",
-  "object.field.maxWeight":"макс вес",
-  "object.field.urlImage":"изображение",
+  "object.field.minWeight": "мин вес",
+  "object.field.maxWeight": "макс вес",
+  "object.field.urlImage": "изображение",
   "object.field.adaptability": "приспособляемость",
   "object.field.affection_level": "привязанность",
   "object.field.child_friendly": "дружелюбный к ребенку",
@@ -55,5 +53,8 @@
   "object.field.stranger_friendly": "дружелюбный к незнакомцам",
   "object.field.suppressed_tail": "подавленный хвост",
   "object.field.vocalisation": "вокализация",
-  "characteristic.title": "Характеристика"
+  "characteristic.title": "Характеристика",
+  "filter.error.header": "Список избранных пород пуст",
+  "filter.error.text": "Отметьте свои любимые породы кнопкой звездочка",
+  "filter.error.reset": "Сбросить фильры"
 }

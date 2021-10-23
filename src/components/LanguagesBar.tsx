@@ -1,13 +1,11 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext} from 'react';
 import {FormattedMessage} from "react-intl";
 import {Context} from "./Wrapper";
-import {Container, Form, Navbar} from "react-bootstrap";
-import Select from "react-select";
+import {Container, Navbar} from "react-bootstrap";
 
 function LanguagesBar() {
 
     const context = useContext(Context)
-
 
 
     return (
